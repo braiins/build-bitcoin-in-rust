@@ -1,5 +1,5 @@
 [package]
-name = "good-wallet"
+name = "wallet"
 version = "0.1.0"
 edition = "2021"
 
