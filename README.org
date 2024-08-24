@@ -1,0 +1,115 @@
+#+title: Building Bitcoin in Rust
+
+This repository contains a toy implementation of the Bitcoin protocol based on the original whitepaper. It serves as a companion to the book "Building Bitcoin in Rust".
+
+** About the Book
+
+"Building Bitcoin in Rust" is a comprehensive guide to understanding and implementing the core concepts of Bitcoin using the Rust programming language. You can find the book at:
+
+[[https://braiins.com/books/building-bitcoin-in-rust][https://braiins.com/books/building-bitcoin-in-rust]]
+
+** Author
+
+- Name: Lukáš Hozda
+- Email: lukas.hozda@braiins.cz
+- X/Twitter: [[https://twitter.com/LukasHozda][@LukasHozda]] (Preferred mode of communication)
+
+** Questions and Issues
+
+If you have questions about the implementation, the book, or encounter issues with Rust, please use the [[https://github.com/your-username/building-bitcoin-in-rust/discussions][GitHub Discussions]] feature in this repository.
+
+** Getting Started
+
+*** Installing Rust
+
+To run this project, you'll need to install Rust. We recommend using Rustup, the official Rust installer.
+
+**** On Linux or macOS:
+
+Open a terminal and run:
+
+#+BEGIN_SRC sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+#+END_SRC
+
+Follow the on-screen instructions to complete the installation.
+
+**** On Windows:
+
+1. Download the Rustup installer from [[https://rustup.rs/][rustup.rs]].
+2. Run the installer and follow the on-screen instructions.
+
+After installation, restart your terminal or command prompt.
+
+*** Compiling and Running the Project
+
+1. Clone this repository:
+   #+BEGIN_SRC sh
+   git clone https://github.com/your-username/building-bitcoin-in-rust.git
+   cd building-bitcoin-in-rust
+   #+END_SRC
+
+2. Compile the project:
+   #+BEGIN_SRC sh
+   cargo build --release
+   #+END_SRC
+
+3. Run the node:
+   #+BEGIN_SRC sh
+   cargo run --release --bin node -- [OPTIONS] [INITIAL_NODES...]
+   #+END_SRC
+
+   Options:
+   - =--port <PORT>=: Set the port number (default: 9000)
+   - =--blockchain-file <FILE>=: Set the blockchain file location (default: "./blockchain.cbor")
+
+   Example:
+   #+BEGIN_SRC sh
+   cargo run --release --bin node -- --port 9000 --blockchain-file ./my_blockchain.cbor 127.0.0.1:9001 127.0.0.1:9002
+   #+END_SRC
+
+4. Run the miner:
+   #+BEGIN_SRC sh
+   cargo run --release --bin miner -- --address <NODE_ADDRESS> --public-key-file <PUBLIC_KEY_FILE>
+   #+END_SRC
+
+   Example:
+   #+BEGIN_SRC sh
+   cargo run --release --bin miner -- --address 127.0.0.1:9000 --public-key-file miner_key.pub
+   #+END_SRC
+
+5. Run the wallet:
+   #+BEGIN_SRC sh
+   cargo run --release --bin wallet -- [OPTIONS]
+   #+END_SRC
+
+   Options:
+   - =-c, --config <FILE>=: Set the wallet config file (default: "wallet_config.toml")
+   - =-n, --node <ADDRESS>=: Set the node address
+
+   Example:
+   #+BEGIN_SRC sh
+   cargo run --release --bin wallet -- --config my_wallet_config.toml --node 127.0.0.1:9000
+   #+END_SRC
+
+** License
+
+The source code in this repository is licensed under the ISC License:
+
+#+BEGIN_SRC
+Copyright (c) 2023, Lukáš Hozda
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+#+END_SRC
+
+Please note that this license applies only to the source code in this repository. The text of the book "Building Bitcoin in Rust" is proprietary and not covered by this license.
