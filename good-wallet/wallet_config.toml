@@ -1,0 +1,17 @@
+default_node = "127.0.0.1:9000"
+
+[[my_keys]]
+public = "./alice.pub.pem"
+private = "./alice.priv.cbor"
+
+[[contacts]]
+name = "Alice"
+key = "alice.pub.pem"
+
+[[contacts]]
+name = "Bob"
+key = "bob.pub.pem"
+
+[fee_config]
+fee_type = "Percent"
+value = 0.0
